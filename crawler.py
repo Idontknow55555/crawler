@@ -226,18 +226,18 @@ def insert_data_to_sql(all_titles, all_dates, all_reasons, all_contents, all_mai
     try:
         # 連接到MySQL數據庫
         db = MySQLdb.connect(
-            host="163.13.201.96",
-            port=3307,
-            user="root",
-            passwd="JudgementAnalysis_0000",
-            db="判決書分析比對系統_db"
+            host="your host",
+            port=your port,
+            user="your user",
+            passwd="your password",
+            db="your database"
         )
         print("成功連接到資料庫。")
 
         cursor = db.cursor()
 
         # 獲取當前最大ID
-        cursor.execute("SELECT MAX(id) FROM `Table`")
+        cursor.execute("SELECT MAX(id) FROM `Your table`")
         max_id = cursor.fetchone()[0] or 0
         print(f"目前最大 id: {max_id}")
 
@@ -265,7 +265,7 @@ def insert_data_to_sql(all_titles, all_dates, all_reasons, all_contents, all_mai
 
         # 準備SQL插入語句
         sql = """
-        INSERT INTO `Table` (
+        INSERT INTO `Your Table` (
             id,
             裁判字號, 
             裁判日期, 
@@ -330,18 +330,6 @@ def conSearch(year):
         driver.find_element(By.CSS_SELECTOR, 'input#dd2').send_keys('31')  # 裁判期間－迄日
         sleep(1)
         driver.find_element(By.CSS_SELECTOR, 'input#jud_title').send_keys('返還墊款')
-        # 清償借款、給付借款、返還借款、損害賠償、遷讓房屋、清償債務、分割共有物、侵權行為損害賠償、分割遺產、損害賠償(交通)、給付工程款、給付電信費
-        # 返還不當得利、給付工資、侵權行為損害賠償(交通)、給付資遣費、返還信用卡消費款、返還消費借貸款、請求分割共有物、請求損害賠償、給付買賣價金
-        # 給付貨款、給付承攬報酬、返還價金、請求給付資遣費、請求遷讓房屋、給付違約金、給付退休金差額、撤銷遺產分割登記、代位分割遺產
-        # 請求侵權行為損害賠償、給付簽帳卡消費款、給付薪資、請求給付薪資、給付報酬、請求給付工資、返還土地、返還買賣價金、請求清償借款、返還所有物
-        # 債務不履行損害賠償、給付保險金、給付租金、給付扣押款、給付分期買賣價金、請求分割遺產、返還代墊款、返還租賃物、返還房屋
-        # 給付委任報酬、給付職業災害補償、請求給付職業災害補償、給付服務報酬、給付管理費
-        # 履行遺產分割協議、返還股份、返還牌照、請求返還不當得利、拆除地上物返還土地、返還借名登記土地、返還不動產、返還押租金、國家損害賠償、請求職業災害損害賠償
-        # 侵權配偶權損害賠償、遷讓房地、給付差額價金、給付應分擔款、給付薪資債權
-        # 給付代收款項、給付預告工資、給付醫療費用、給付電費、給付必要費用、給付醫療費、給付信用卡消費款、給付加班費、給付票款
-        # 給付款項、返還報酬、返還履約保證金、返還工程款
-        # 請求返還買賣價金、返還本票、返還墊付款、返還服務費、返還金錢、返還不動產所有權、返還承攬報酬、返還款項、請求返還押租保證金
-        # 請求返還土地、請求返還價金、返還投資金、返還獎金、返還房地、返還保管款、返還就學貸款、返還墊款
         sleep(1)
         driver.find_element(By.CSS_SELECTOR, 'input#jud_jmain').send_keys('判決')  # 裁判案由
         sleep(1)
