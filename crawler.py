@@ -227,7 +227,7 @@ def insert_data_to_sql(all_titles, all_dates, all_reasons, all_contents, all_mai
         # 連接到MySQL數據庫
         db = MySQLdb.connect(
             host="your host",
-            port=your port,
+            port="your port",
             user="your user",
             passwd="your password",
             db="your database"
